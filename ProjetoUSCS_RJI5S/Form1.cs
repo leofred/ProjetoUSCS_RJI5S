@@ -33,7 +33,7 @@ namespace ProjetoUSCS_RJI5S
                 { 0, 0, 2, 0, 0, 0, 6, 7, 0 }
             };
             Graph t = new Graph();
-            t.dijkstra(graph, 0);
+            t.dijkstra(graph, 8);
 
         }
 
@@ -44,5 +44,29 @@ namespace ProjetoUSCS_RJI5S
             //label1.Text = dt.Rows[1].ItemArray[0].ToString();
         }
 
+        private void checkedListBox1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void domainUpDown1_SelectedItemChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void groupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void radioButton2_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

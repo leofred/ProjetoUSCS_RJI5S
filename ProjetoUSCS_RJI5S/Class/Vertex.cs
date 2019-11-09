@@ -64,7 +64,7 @@ namespace ProjetoUSCS_RJI5S.Class
         {
             p2 = value;
         }
-        private void SetMetricA(int value)
+      private void SetMetricA(int value)
         {
             metricA = value;
         }
