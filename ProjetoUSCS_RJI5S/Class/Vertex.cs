@@ -21,11 +21,11 @@ namespace ProjetoUSCS_RJI5S.Class
 
         #region CONSTRUTORES
 
-        public Vertex(City p1, City p2, int metricA = 1, int metricB = 1, int metricC = 1)
+        public Vertex(City p1, City p2, int metricB = 1, int metricC = 1)
         {
             this.SetP1(p1);
             this.SetP2(p2);
-            this.SetMetricA(metricA);
+            this.SetMetricA(1);
             this.SetMetricB(metricB);
             this.SetMetricC(metricC);
         }
@@ -64,7 +64,7 @@ namespace ProjetoUSCS_RJI5S.Class
         {
             p2 = value;
         }
-        public void SetMetricA(int value)
+        private void SetMetricA(int value)
         {
             metricA = value;
         }

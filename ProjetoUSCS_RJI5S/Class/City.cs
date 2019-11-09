@@ -86,7 +86,7 @@ namespace ProjetoUSCS_RJI5S.Class
                 db = new Database();
                 db.Conectar();
                 string connStr = String.Format("INSERT INTO cidade values (null, '{0}', '{1}', '{2}', '{3}')", this.SIGLA, this.nome, this.posicao_X, this.posicao_Y);
-                long lastId = db.ExecutarComandoSQL(connStr);
+                long lastId = db.ExecutarComandoSQL(connStr, true);
                 if (lastId > 0)
                 {
                     return lastId;
