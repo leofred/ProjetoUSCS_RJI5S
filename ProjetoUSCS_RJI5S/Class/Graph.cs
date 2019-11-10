@@ -8,12 +8,9 @@ namespace ProjetoUSCS_RJI5S.Class
 {
     class Graph
     {
-        // A utility function to find the 
-        // vertex with minimum distance 
-        // value, from the set of vertices 
-        // not yet included in shortest 
-        // path tree 
-        static int V = 9;
+        // Numero de Vertices
+        private int V;
+
         int minDistance(int[] dist,
                         bool[] sptSet)
         {
@@ -44,9 +41,11 @@ namespace ProjetoUSCS_RJI5S.Class
         // single source shortest path algorithm 
         // for a graph represented using adjacency 
         // matrix representation 
-        public void dijkstra(int[,] graph, int src)
+        public void dijkstra(int[,] matrix, int src)
         {
-            int[] dist = new int[V]; // The output array. dist[i] 
+            this.V = matrix.GetLength(0);
+            int[] dist = new int[V];
+                                    // The output array. dist[i] 
                                      // will hold the shortest 
                                      // distance from src to i 
 
@@ -89,9 +88,9 @@ namespace ProjetoUSCS_RJI5S.Class
                     // to v, and total weight of path 
                     // from src to v through u is smaller 
                     // than current value of dist[v] 
-                    if (!sptSet[v] && graph[u, v] != 0 &&
-                         dist[u] != int.MaxValue && dist[u] + graph[u, v] < dist[v])
-                        dist[v] = dist[u] + graph[u, v];
+                    if (!sptSet[v] && matrix[u, v] != 0 &&
+                         dist[u] != int.MaxValue && dist[u] + matrix[u, v] < dist[v])
+                        dist[v] = dist[u] + matrix[u, v];
             }
 
             // print the constructed distance array 

@@ -65,7 +65,6 @@
             this.label1.Size = new System.Drawing.Size(40, 13);
             this.label1.TabIndex = 2;
             this.label1.Text = "Origem";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -99,7 +98,6 @@
             this.distRB.Tag = "2";
             this.distRB.Text = "Distäncia";
             this.distRB.UseVisualStyleBackColor = true;
-            this.distRB.CheckedChanged += new System.EventHandler(this.radioButton2_CheckedChanged);
             // 
             // costRB
             // 
@@ -125,7 +123,6 @@
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Métricas";
-            this.groupBox1.Enter += new System.EventHandler(this.groupBox1_Enter);
             // 
             // groupBox2
             // 
@@ -147,7 +144,6 @@
             this.comboBox2.Name = "comboBox2";
             this.comboBox2.Size = new System.Drawing.Size(113, 21);
             this.comboBox2.TabIndex = 14;
-            this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // comboBox1
             // 
@@ -156,7 +152,6 @@
             this.comboBox1.Name = "comboBox1";
             this.comboBox1.Size = new System.Drawing.Size(113, 21);
             this.comboBox1.TabIndex = 11;
-            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // button1
             // 
@@ -169,6 +164,7 @@
             // 
             // button2
             // 
+            this.button2.Enabled = false;
             this.button2.Location = new System.Drawing.Point(705, 389);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(102, 29);
@@ -178,6 +174,7 @@
             // 
             // button3
             // 
+            this.button3.Enabled = false;
             this.button3.Location = new System.Drawing.Point(705, 360);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(102, 29);
