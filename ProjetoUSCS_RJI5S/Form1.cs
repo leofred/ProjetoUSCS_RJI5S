@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using WindowsFormsApp1.Classes;
 
 namespace ProjetoUSCS_RJI5S
 {
@@ -17,18 +18,26 @@ namespace ProjetoUSCS_RJI5S
         int[,] metricB;
         int[,] metricC;
         public Form1()
-        {
-            InitializeComponent();
+        {            
+            InitializeComponent ();
         }
 
         private void Form1_Shown(object sender, EventArgs e)
         {
-            Graph t = new Graph();
-            t.dijkstra(this.metricC, 0);
+            Dijkstra.dijkstra(this.metricB, 0, 14);
         }
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            Database db = new Database ( );
+            List<City> city_list = db.getAllCitys ( );
+            List<Vertex> vertex_list = db.getAllVertex ( );
+
+            foreach ( City city in city_list ){
+                originCB.Items.Add ( city.GetSIGLA ( ) );
+                destinyCB.Items.Add ( city.GetSIGLA ( ) );
+            }
+            
             this.metricA = new int[,] {
              { 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
              { 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -98,5 +107,7 @@ namespace ProjetoUSCS_RJI5S
              { 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 5, 0 }
             };
         }
+
+
     }
 }

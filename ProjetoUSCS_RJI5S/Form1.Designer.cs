@@ -36,8 +36,8 @@
             this.costRB = new System.Windows.Forms.RadioButton();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.comboBox2 = new System.Windows.Forms.ComboBox();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.destinyCB = new System.Windows.Forms.ComboBox();
+            this.originCB = new System.Windows.Forms.ComboBox();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
@@ -126,10 +126,10 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.comboBox2);
+            this.groupBox2.Controls.Add(this.destinyCB);
             this.groupBox2.Controls.Add(this.groupBox1);
             this.groupBox2.Controls.Add(this.label1);
-            this.groupBox2.Controls.Add(this.comboBox1);
+            this.groupBox2.Controls.Add(this.originCB);
             this.groupBox2.Controls.Add(this.label2);
             this.groupBox2.Location = new System.Drawing.Point(459, 360);
             this.groupBox2.Name = "groupBox2";
@@ -137,21 +137,21 @@
             this.groupBox2.TabIndex = 10;
             this.groupBox2.TabStop = false;
             // 
-            // comboBox2
+            // destinyCB
             // 
-            this.comboBox2.FormattingEnabled = true;
-            this.comboBox2.Location = new System.Drawing.Point(121, 16);
-            this.comboBox2.Name = "comboBox2";
-            this.comboBox2.Size = new System.Drawing.Size(113, 21);
-            this.comboBox2.TabIndex = 14;
+            this.destinyCB.FormattingEnabled = true;
+            this.destinyCB.Location = new System.Drawing.Point(121, 16);
+            this.destinyCB.Name = "destinyCB";
+            this.destinyCB.Size = new System.Drawing.Size(113, 21);
+            this.destinyCB.TabIndex = 14;
             // 
-            // comboBox1
+            // originCB
             // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(6, 16);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(113, 21);
-            this.comboBox1.TabIndex = 11;
+            this.originCB.FormattingEnabled = true;
+            this.originCB.Location = new System.Drawing.Point(6, 16);
+            this.originCB.Name = "originCB";
+            this.originCB.Size = new System.Drawing.Size(113, 21);
+            this.originCB.TabIndex = 11;
             // 
             // button1
             // 
@@ -217,8 +217,8 @@
         private System.Windows.Forms.RadioButton costRB;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox comboBox2;
-        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.ComboBox destinyCB;
+        private System.Windows.Forms.ComboBox originCB;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
