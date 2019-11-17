@@ -191,13 +191,11 @@
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(465, 12);
+            this.richTextBox1.Location = new System.Drawing.Point(459, 12);
             this.richTextBox1.Name = "richTextBox1";
             this.richTextBox1.ReadOnly = true;
-            this.richTextBox1.ShortcutsEnabled = false;
-            this.richTextBox1.Size = new System.Drawing.Size(342, 342);
-            this.richTextBox1.TabIndex = 14;
-            this.richTextBox1.TabStop = false;
+            this.richTextBox1.Size = new System.Drawing.Size(348, 342);
+            this.richTextBox1.TabIndex = 15;
             this.richTextBox1.Text = "";
             // 
             // Form1

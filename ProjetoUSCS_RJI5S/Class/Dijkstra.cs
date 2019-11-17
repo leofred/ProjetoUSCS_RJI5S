@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ProjetoUSCS_RJI5S.Class;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -114,9 +115,10 @@ namespace WindowsFormsApp1.Classes {
             if ( currentVertex == NO_PARENT ) {
                 return;
             }
-            //CS_NodeRepo.path.Add(currentVertex);
-            Console.Write ( "A-" + currentVertex + " " );
+            Path.cityPath.Add ( currentVertex );
+            Console.Write ( " " + currentVertex + " << " );
             printPath ( parents [ currentVertex ] , parents );
+            Console.WriteLine ( );
         }
     }
 }

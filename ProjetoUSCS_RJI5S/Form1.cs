@@ -96,13 +96,10 @@ namespace ProjetoUSCS_RJI5S
         
         private void Form1_Load(object sender, EventArgs e)
         {
-            
-
             foreach ( City city in city_list ){
                 originCB.Items.Add ( city.GetSIGLA ( ) );
                 destinyCB.Items.Add ( city.GetSIGLA ( ) );
             }
-
         }
 
         private void hopsRB_CheckedChanged ( object sender , EventArgs e ) {
@@ -117,12 +114,6 @@ namespace ProjetoUSCS_RJI5S
             metricChoose = costRB.Tag.ToString ( );
         }
 
-        private void calcRoute_Click ( object sender , EventArgs e ) {
-            Matrix matrix = new Matrix ( city_list , vertex_list , metricChoose );
-            matrix.createMatrix ( );
-
-            Dijkstra.dijkstra ( matrix.MatrixStruct , originIndex , destinyIndex );
-        }
 
         private void originCB_SelectedIndexChanged ( object sender , EventArgs e ) {
             originIndex = originCB.SelectedIndex;
@@ -130,6 +121,28 @@ namespace ProjetoUSCS_RJI5S
 
         private void destinyCB_SelectedIndexChanged ( object sender , EventArgs e ) {
             destinyIndex = destinyCB.SelectedIndex;
+        }
+        private void calcRoute_Click ( object sender , EventArgs e ) {
+            
+            richTextBox1.Text = String.Format ( "Rota de {0} para {1}\n===================\n" , city_list [ originIndex ].Getnome ( ) , city_list [ destinyIndex ].Getnome ( )  );
+            
+            Matrix matrix = new Matrix ( city_list , vertex_list , metricChoose );
+
+            matrix.createMatrix ( );
+
+            Dijkstra.dijkstra ( matrix.MatrixStruct , originIndex , destinyIndex);
+            
+            List<City> citysPath = new List<City>();
+
+            foreach ( int cityIndex in Path.cityPath ) {
+                citysPath.Add ( city_list [ cityIndex ] );
+            }
+
+            citysPath.Reverse ( );
+
+            foreach ( City item in citysPath ) {
+                richTextBox1.Text += item.Getnome ( ) + "\n";
+            }
         }
     }
 }

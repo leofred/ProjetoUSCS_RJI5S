@@ -54,6 +54,7 @@
     <Compile Include="Class\Database.cs" />
     <Compile Include="Class\Dijkstra.cs" />
     <Compile Include="Class\Matrix.cs" />
+    <Compile Include="Class\Path.cs" />
     <Compile Include="Class\Vertex.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
