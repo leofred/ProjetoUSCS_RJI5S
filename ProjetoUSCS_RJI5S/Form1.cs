@@ -14,31 +14,14 @@ namespace ProjetoUSCS_RJI5S
 {
     public partial class Form1 : Form
     {
-        int[,] metricA;
-        int[,] metricB;
-        int[,] metricC;
-        public Form1()
-        {            
-            InitializeComponent ();
-        }
+        private Database db = new Database ( );
+        private List<City> city_list;
+        private List<Vertex> vertex_list;
 
-        private void Form1_Shown(object sender, EventArgs e)
-        {
-            Dijkstra.dijkstra(this.metricB, 0, 14);
-        }
-
-        private void Form1_Load(object sender, EventArgs e)
-        {
-            Database db = new Database ( );
-            List<City> city_list = db.getAllCitys ( );
-            List<Vertex> vertex_list = db.getAllVertex ( );
-
-            foreach ( City city in city_list ){
-                originCB.Items.Add ( city.GetSIGLA ( ) );
-                destinyCB.Items.Add ( city.GetSIGLA ( ) );
-            }
-            
-            this.metricA = new int[,] {
+        string metricChoose;
+        int originIndex;
+        int destinyIndex;
+        int[,] metricA = new int [ , ] {
              { 0, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
              { 1, 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
              { 1, 1, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -60,8 +43,7 @@ namespace ProjetoUSCS_RJI5S
              { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 1 },
              { 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 1, 0 }
             };
-
-            this.metricB = new int[,] {
+        int [ ,] metricB = new int [ , ] {
              { 0, 6, 7, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
              { 6, 0, 1, 2, 0, 0, 0,12, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
              { 7, 1, 0, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -83,8 +65,7 @@ namespace ProjetoUSCS_RJI5S
              { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 0, 8 },
              { 0, 0, 0, 0, 0, 0, 0,20, 0, 0, 0, 0, 0, 0, 0, 0, 0,15, 8, 0 }
             };
-
-            this.metricC = new int[,] {
+        int [ ,] metricC = new int [ , ] {
              { 0, 2, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
              { 2, 0, 3, 5, 0, 0, 0,10, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
              { 2, 3, 0, 5, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0 },
@@ -106,8 +87,49 @@ namespace ProjetoUSCS_RJI5S
              { 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 3, 0, 5 },
              { 0, 0, 0, 0, 0, 0, 0, 6, 0, 0, 0, 0, 0, 0, 0, 0, 0, 4, 5, 0 }
             };
+        public Form1()
+        {
+            city_list = db.getAllCitys ( );
+            vertex_list = db.getAllVertex ( );
+            InitializeComponent ();
+        }
+        
+        private void Form1_Load(object sender, EventArgs e)
+        {
+            
+
+            foreach ( City city in city_list ){
+                originCB.Items.Add ( city.GetSIGLA ( ) );
+                destinyCB.Items.Add ( city.GetSIGLA ( ) );
+            }
+
         }
 
+        private void hopsRB_CheckedChanged ( object sender , EventArgs e ) {
+            metricChoose = hopsRB.Tag.ToString();
+        }
 
+        private void distRB_CheckedChanged ( object sender , EventArgs e ) {
+            metricChoose = distRB.Tag.ToString ( );
+        }
+
+        private void costRB_CheckedChanged ( object sender , EventArgs e ) {
+            metricChoose = costRB.Tag.ToString ( );
+        }
+
+        private void calcRoute_Click ( object sender , EventArgs e ) {
+            Matrix matrix = new Matrix ( city_list , vertex_list , metricChoose );
+            matrix.createMatrix ( );
+
+            Dijkstra.dijkstra ( matrix.MatrixStruct , originIndex , destinyIndex );
+        }
+
+        private void originCB_SelectedIndexChanged ( object sender , EventArgs e ) {
+            originIndex = originCB.SelectedIndex;
+        }
+
+        private void destinyCB_SelectedIndexChanged ( object sender , EventArgs e ) {
+            destinyIndex = destinyCB.SelectedIndex;
+        }
     }
 }

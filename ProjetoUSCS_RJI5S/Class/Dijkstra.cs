@@ -29,8 +29,7 @@ namespace WindowsFormsApp1.Classes {
 
             // Initialize all distances as  
             // INFINITE and added[] as false  
-            for ( int vertexIndex = 0 ; vertexIndex < nVertices ;
-                                                vertexIndex++ ) {
+            for ( int vertexIndex = 0 ; vertexIndex < nVertices ; vertexIndex++ ) {
                 shortestDistances [ vertexIndex ] = int.MaxValue;
                 added [ vertexIndex ] = false;
             }
@@ -96,7 +95,6 @@ namespace WindowsFormsApp1.Classes {
             int nVertices = distances.Length;
             Console.WriteLine ( "\n" + endVertexFromSelection + " is the destination\n" );
             Console.Write ( "Vertex\t Distance\tPath" );
-
             for ( int vertexIndex = 0 ; vertexIndex < nVertices ; vertexIndex++ ) {
                 Console.Write ( "\n" + startVertex + " -> " + vertexIndex + " \t\t " );
                 Console.Write ( distances [ vertexIndex ] + "\t\t" );

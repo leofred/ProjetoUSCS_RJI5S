@@ -38,9 +38,10 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.destinyCB = new System.Windows.Forms.ComboBox();
             this.originCB = new System.Windows.Forms.ComboBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.calcRoute = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -83,9 +84,10 @@
             this.hopsRB.Size = new System.Drawing.Size(50, 17);
             this.hopsRB.TabIndex = 6;
             this.hopsRB.TabStop = true;
-            this.hopsRB.Tag = "1";
+            this.hopsRB.Tag = "A";
             this.hopsRB.Text = "Hops";
             this.hopsRB.UseVisualStyleBackColor = true;
+            this.hopsRB.CheckedChanged += new System.EventHandler(this.hopsRB_CheckedChanged);
             // 
             // distRB
             // 
@@ -95,9 +97,10 @@
             this.distRB.Size = new System.Drawing.Size(69, 17);
             this.distRB.TabIndex = 7;
             this.distRB.TabStop = true;
-            this.distRB.Tag = "2";
+            this.distRB.Tag = "B";
             this.distRB.Text = "Distäncia";
             this.distRB.UseVisualStyleBackColor = true;
+            this.distRB.CheckedChanged += new System.EventHandler(this.distRB_CheckedChanged);
             // 
             // costRB
             // 
@@ -107,9 +110,10 @@
             this.costRB.Size = new System.Drawing.Size(52, 17);
             this.costRB.TabIndex = 8;
             this.costRB.TabStop = true;
-            this.costRB.Tag = "3";
+            this.costRB.Tag = "C";
             this.costRB.Text = "Custo";
             this.costRB.UseVisualStyleBackColor = true;
+            this.costRB.CheckedChanged += new System.EventHandler(this.costRB_CheckedChanged);
             // 
             // groupBox1
             // 
@@ -144,6 +148,7 @@
             this.destinyCB.Name = "destinyCB";
             this.destinyCB.Size = new System.Drawing.Size(113, 21);
             this.destinyCB.TabIndex = 14;
+            this.destinyCB.SelectedIndexChanged += new System.EventHandler(this.destinyCB_SelectedIndexChanged);
             // 
             // originCB
             // 
@@ -152,15 +157,17 @@
             this.originCB.Name = "originCB";
             this.originCB.Size = new System.Drawing.Size(113, 21);
             this.originCB.TabIndex = 11;
+            this.originCB.SelectedIndexChanged += new System.EventHandler(this.originCB_SelectedIndexChanged);
             // 
-            // button1
+            // calcRoute
             // 
-            this.button1.Location = new System.Drawing.Point(705, 418);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 29);
-            this.button1.TabIndex = 11;
-            this.button1.Text = "Calcular Rota";
-            this.button1.UseVisualStyleBackColor = true;
+            this.calcRoute.Location = new System.Drawing.Point(705, 418);
+            this.calcRoute.Name = "calcRoute";
+            this.calcRoute.Size = new System.Drawing.Size(102, 29);
+            this.calcRoute.TabIndex = 11;
+            this.calcRoute.Text = "Calcular Rota";
+            this.calcRoute.UseVisualStyleBackColor = true;
+            this.calcRoute.Click += new System.EventHandler(this.calcRoute_Click);
             // 
             // button2
             // 
@@ -182,21 +189,32 @@
             this.button3.Text = "Adicionar Ponto";
             this.button3.UseVisualStyleBackColor = true;
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(465, 12);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.ReadOnly = true;
+            this.richTextBox1.ShortcutsEnabled = false;
+            this.richTextBox1.Size = new System.Drawing.Size(342, 342);
+            this.richTextBox1.TabIndex = 14;
+            this.richTextBox1.TabStop = false;
+            this.richTextBox1.Text = "";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(821, 461);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button3);
             this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.calcRoute);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.pictureBox1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Name = "Form1";
             this.Text = "Form1";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.Shown += new System.EventHandler(this.Form1_Shown);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -219,9 +237,10 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.ComboBox destinyCB;
         private System.Windows.Forms.ComboBox originCB;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button calcRoute;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }
 

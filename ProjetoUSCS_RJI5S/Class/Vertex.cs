@@ -38,13 +38,25 @@ namespace ProjetoUSCS_RJI5S.Class {
         public string GetP2 () {
             return this.P2;
         }
-        public int GetMetricA () {
+        public int GetMetric(string metric ) {
+            switch ( metric ) {
+                case "A":
+                    return metricA;
+                case "B":
+                    return metricB;
+                case "C":
+                    return metricC;
+                default:
+                    return 1;
+            }
+        }
+        private int GetMetricA () {
             return metricA;
         }
-        public int GetMetricB () {
+        private int GetMetricB () {
             return metricB;
         }
-        public int GetMetricC () {
+        private int GetMetricC () {
             return metricC;
         }
 
