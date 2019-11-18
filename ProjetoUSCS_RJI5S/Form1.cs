@@ -9,6 +9,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using WindowsFormsApp1.Classes;
+using System.Diagnostics;
 
 namespace ProjetoUSCS_RJI5S
 {
@@ -91,6 +92,8 @@ namespace ProjetoUSCS_RJI5S
         {
             city_list = db.getAllCitys ( );
             vertex_list = db.getAllVertex ( );
+            MaximizeBox = false;
+            MinimizeBox = false;
             InitializeComponent ();
         }
         
@@ -142,6 +145,77 @@ namespace ProjetoUSCS_RJI5S
 
             foreach ( City item in citysPath ) {
                 richTextBox1.Text += item.Getnome ( ) + "\n";
+            }
+
+            Debug.WriteLine(citysPath);
+        }
+
+        private void Button3_Click(object sender, EventArgs e)
+        {
+            Form2 addCity = new Form2();
+            if (addCity.ShowDialog(this) == DialogResult.OK)
+            {
+                city_list = db.getAllCitys();
+                vertex_list = db.getAllVertex();
+
+                foreach (City city in city_list)
+                {
+                    originCB.Items.Add(city.GetSIGLA());
+                    destinyCB.Items.Add(city.GetSIGLA());
+                }
+            }
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
+            Form4 removeCity = new Form4();
+            if (removeCity.ShowDialog(this) == DialogResult.OK)
+            {
+                city_list = db.getAllCitys();
+                vertex_list = db.getAllVertex();
+
+                foreach (City city in city_list)
+                {
+                    originCB.Items.Add(city.GetSIGLA());
+                    destinyCB.Items.Add(city.GetSIGLA());
+                }
+            }
+        }
+
+        private void Button1_Click(object sender, EventArgs e)
+        {
+            Form3 addVertex = new Form3();
+            if (addVertex.ShowDialog(this) == DialogResult.OK)
+            {
+                city_list = db.getAllCitys();
+                vertex_list = db.getAllVertex();
+
+                foreach (City city in city_list)
+                {
+                    originCB.Items.Add(city.GetSIGLA());
+                    destinyCB.Items.Add(city.GetSIGLA());
+                }
+            }
+        }
+
+        private void RichTextBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button4_Click(object sender, EventArgs e)
+        {
+            Form5 removeVertex = new Form5();
+            if (removeVertex.ShowDialog(this) == DialogResult.OK)
+            {
+                city_list = db.getAllCitys();
+                vertex_list = db.getAllVertex();
+
+                foreach (City city in city_list)
+                {
+                    originCB.Items.Add(city.GetSIGLA());
+                    destinyCB.Items.Add(city.GetSIGLA());
+                }
             }
         }
     }

@@ -50,6 +50,34 @@ namespace ProjetoUSCS_RJI5S.Class {
             return dr;
         }
 
+        public List<City> getPoints () {
+            List<City> city_list = new List<City> ( );
+
+            try {
+                this.Conectar ( );
+                MySqlCommand comando = new MySqlCommand ( "select * from cidade" , conn );
+                MySqlDataReader dr = comando.ExecuteReader ( );
+
+                while ( dr.Read ( ) ) {
+                    City node = new City (
+                      dr [ "Sigla" ].ToString ( ) ,
+                      dr [ "Nome" ].ToString ( ) ,
+                      int.Parse ( dr [ "Posicao_X" ].ToString ( ) ) ,
+                      int.Parse ( dr [ "Posicao_Y" ].ToString ( ) )
+                      );
+                    city_list.Add ( node );
+                }
+                conn.Close ( );
+                return city_list;
+            } catch ( MySqlException ex ) {
+
+                throw new Exception ( ex.Message );
+            } catch ( Exception ex ) {
+
+                throw new Exception ( ex.Message );
+            }
+
+        }
         public List<City> getAllCitys () {
             List<City> city_list = new List<City> ( );
 

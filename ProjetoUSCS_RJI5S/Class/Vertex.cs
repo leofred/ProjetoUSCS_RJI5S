@@ -26,6 +26,13 @@ namespace ProjetoUSCS_RJI5S.Class {
             this.SetMetricB ( metricB );
             this.SetMetricC ( metricC );
         }
+        public Vertex (Vertex vertex) {
+            this.SetP1(vertex.GetP1());
+            this.SetP2(vertex.GetP2());
+            this.SetMetricA(vertex.GetMetricA());
+            this.SetMetricB(vertex.GetMetricB());
+            this.SetMetricC(vertex.GetMetricC());
+        }
         public Vertex () { }
         #endregion
 
@@ -37,6 +44,10 @@ namespace ProjetoUSCS_RJI5S.Class {
         }
         public string GetP2 () {
             return this.P2;
+        }
+        public string GetComboName()
+        {
+            return this.P1 + " -> " + this.P2;
         }
         public int GetMetric(string metric ) {
             switch ( metric ) {
@@ -95,7 +106,7 @@ namespace ProjetoUSCS_RJI5S.Class {
             try {
                 db = new Database ( );
                 db.Conectar ( );
-                string connStr = String.Format ( "DELETE FROM vertices WHERE P1_Cidade = '{0}' and P2_Cidade = '{0}'" , this.P1 , this.P2 );
+                string connStr = String.Format ( "DELETE FROM vertice WHERE P1_Sigla = '{0}' and P2_Sigla = '{1}'" , this.P1 , this.P2 );
                 db.ExecutarComandoSQL ( connStr );
                 return true;
             } catch ( Exception e ) {

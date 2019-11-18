@@ -118,7 +118,6 @@ namespace WindowsFormsApp1.Classes {
             Path.cityPath.Add ( currentVertex );
             Console.Write ( " " + currentVertex + " << " );
             printPath ( parents [ currentVertex ] , parents );
-            Console.WriteLine ( );
         }
     }
 }
