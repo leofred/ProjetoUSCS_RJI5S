@@ -150,9 +150,9 @@
             // 
             // calcRoute
             // 
-            this.calcRoute.Location = new System.Drawing.Point(258, 500);
+            this.calcRoute.Location = new System.Drawing.Point(12, 454);
             this.calcRoute.Name = "calcRoute";
-            this.calcRoute.Size = new System.Drawing.Size(102, 29);
+            this.calcRoute.Size = new System.Drawing.Size(240, 40);
             this.calcRoute.TabIndex = 11;
             this.calcRoute.Text = "Calcular Rota";
             this.calcRoute.UseVisualStyleBackColor = true;
@@ -212,7 +212,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(371, 540);
+            this.ClientSize = new System.Drawing.Size(371, 505);
             this.Controls.Add(this.button4);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.richTextBox1);
