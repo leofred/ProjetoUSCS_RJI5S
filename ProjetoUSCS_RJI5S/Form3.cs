@@ -40,15 +40,48 @@ namespace ProjetoUSCS_RJI5S
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Vertex newVertex = new Vertex(
+            if (
+                String.IsNullOrEmpty(cityOne.Text) ||
+                String.IsNullOrEmpty(cityTwo.Text) ||
+                String.IsNullOrEmpty(numericUpDown1.Text) ||
+                String.IsNullOrEmpty(numericUpDown2.Text) ||
+                String.IsNullOrEmpty(numericUpDown3.Text)
+                )
+            {
+                MessageBox.Show("Por favor, preencha todos os campos.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                Vertex newVertex = new Vertex(
                 cityOne.Text,
                 cityTwo.Text,
-                int.Parse(textBox1.Text),
-                int.Parse(textBox2.Text),
-                int.Parse(textBox3.Text));
+                int.Parse(numericUpDown1.Text),
+                int.Parse(numericUpDown2.Text),
+                int.Parse(numericUpDown3.Text));
 
-            newVertex.IncludeDB();
+                newVertex.IncludeDB();
+                this.Close();
+            }
+        }
+
+        private void Label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
             this.Close();
+        }
+
+        private void Label3_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

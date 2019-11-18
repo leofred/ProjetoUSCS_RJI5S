@@ -95,6 +95,32 @@ namespace ProjetoUSCS_RJI5S.Class {
                 db = null;
             }
         }
+        public long DeleteVertex()
+        {
+            try
+            {
+                db = new Database();
+                db.Conectar();
+                string connStr = String.Format("DELETE FROM vertice WHERE P1_Sigla='{0}' OR P2_Sigla = '{0}'", this.Sigla);
+                long lastId = db.ExecutarComandoSQL(connStr, true);
+                if (lastId > 0)
+                {
+                    return lastId;
+                }
+                else
+                {
+                    return -1;
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Erro ao excluir! " + e.Message);
+            }
+            finally
+            {
+                db = null;
+            }
+        }
 
 
         #endregion

@@ -34,9 +34,37 @@ namespace ProjetoUSCS_RJI5S
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            City cityToRemove = new City(allCities.Text, "remove");
-            cityToRemove.DeleteDB();
+            if (String.IsNullOrEmpty(allCities.Text))
+            {
+                MessageBox.Show("Por favor, selecione uma cidade.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            } else
+            {
+                var confirmResult = MessageBox.Show("Tem certeza que deseja remover essa cidade?\nSeus vértices também serão removidos!",
+                                     "Remover Cidade",
+                                     MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    City cityToRemove = new City(allCities.Text, "remove");
+                    cityToRemove.DeleteDB();
+                    cityToRemove.DeleteVertex();
+                    this.Close();
+                }
+            }
+        }
+
+        private void AllCities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
             this.Close();
+        }
+
+        private void Label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

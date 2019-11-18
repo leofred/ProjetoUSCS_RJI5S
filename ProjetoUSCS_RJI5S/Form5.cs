@@ -34,14 +34,29 @@ namespace ProjetoUSCS_RJI5S
 
         private void Button1_Click(object sender, EventArgs e)
         {
-            Vertex selectedVertex = vertex_list[allVertex.SelectedIndex];
-            Vertex vertexToRemove = new Vertex(selectedVertex);
+            if (String.IsNullOrEmpty(allVertex.Text))
+            {
+                MessageBox.Show("Por favor, selecione um vértice.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            }
+            else
+            {
+                var confirmResult = MessageBox.Show("Tem certeza que deseja remover esse vértice?",
+                                     "Remover Vértice",
+                                     MessageBoxButtons.YesNo);
+                if (confirmResult == DialogResult.Yes)
+                {
+                    Vertex selectedVertex = vertex_list[allVertex.SelectedIndex];
+                    Vertex vertexToRemove = new Vertex(selectedVertex);
 
-            vertexToRemove.DeleteDB();
+                    vertexToRemove.DeleteDB();
+                    this.Close();
+                }
+            }    
+        }
+
+        private void Button2_Click(object sender, EventArgs e)
+        {
             this.Close();
-
-            Console.WriteLine(vertexToRemove.GetP1());
-            Console.WriteLine(vertexToRemove.GetP2());
         }
     }
 }

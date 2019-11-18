@@ -22,7 +22,9 @@ namespace ProjetoUSCS_RJI5S
         string metricChoose;
         int originIndex;
         int destinyIndex;
-        
+
+        Form6 infoForm = new Form6();
+
         public Form1()
         {
             city_list = db.getAllCitys ( );
@@ -61,31 +63,58 @@ namespace ProjetoUSCS_RJI5S
             destinyIndex = destinyCB.SelectedIndex;
         }
         private void calcRoute_Click ( object sender , EventArgs e ) {
-            
-            richTextBox1.Text = String.Format ( "Rota de {0} para {1}\n===================\n" , city_list [ originIndex ].Getnome ( ) , city_list [ destinyIndex ].Getnome ( )  );
-            
-            Matrix matrix = new Matrix ( city_list , vertex_list , metricChoose );
+            if (
+                String.IsNullOrEmpty(originCB.Text) ||
+                String.IsNullOrEmpty(destinyCB.Text))
+            {
+                MessageBox.Show("Por favor, preencha origem e destino.", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+            } else
+            {
+                richTextBox1.Text = String.Format("Rota de {0} para {1}\n===================\n", city_list[originIndex].Getnome(), city_list[destinyIndex].Getnome());
 
-            matrix.createMatrix ();
+                Matrix matrix = new Matrix(city_list, vertex_list, metricChoose);
 
-            Dijkstra.dijkstra (matrix.MatrixStruct , originIndex , destinyIndex);
-            
-            List<City> citysPath = new List<City>();
+                matrix.createMatrix();
 
-            foreach ( int cityIndex in Path.cityPath ) {
-                citysPath.Add ( city_list [ cityIndex ] );
+                int cost = Dijkstra.dijkstra(matrix.MatrixStruct, originIndex, destinyIndex);
 
-                Console.WriteLine(city_list[cityIndex].Getnome());
+                List<City> citysPath = new List<City>();
+
+                foreach (int cityIndex in Path.cityPath)
+                {
+                    citysPath.Add(city_list[cityIndex]);
+
+                    Console.WriteLine(city_list[cityIndex].Getnome());
+                }
+
+                citysPath.Reverse();
+
+                foreach (City item in citysPath)
+                {
+                    richTextBox1.Text += item.Getnome() + "\n";
+                }
+
+                richTextBox1.Text += "\n===================\n";
+
+                Console.WriteLine("metric" + metricChoose);
+
+                if (metricChoose == "A")
+                {
+                    richTextBox1.Text += "A quantidade total de hops foi de: " + cost.ToString();
+                }
+                else if (metricChoose == "B")
+                {
+                    richTextBox1.Text += "A distância total foi de: " + cost.ToString();
+                }
+                else
+                {
+                    richTextBox1.Text += "O custo total foi de: " + cost.ToString();
+                }
+
+
+                Debug.WriteLine(citysPath);
+                Path.cityPath.Clear();
             }
-
-            citysPath.Reverse ( );
-
-            foreach ( City item in citysPath ) {
-                richTextBox1.Text += item.Getnome ( ) + "\n";
-            }
-
-            Debug.WriteLine(citysPath);
-            Path.cityPath.Clear();
         }
 
         private void Button3_Click(object sender, EventArgs e)
@@ -95,6 +124,9 @@ namespace ProjetoUSCS_RJI5S
             {
                 city_list = db.getAllCitys();
                 vertex_list = db.getAllVertex();
+
+                originCB.Items.Clear();
+                destinyCB.Items.Clear();
 
                 foreach (City city in city_list)
                 {
@@ -112,6 +144,9 @@ namespace ProjetoUSCS_RJI5S
                 city_list = db.getAllCitys();
                 vertex_list = db.getAllVertex();
 
+                originCB.Items.Clear();
+                destinyCB.Items.Clear();
+
                 foreach (City city in city_list)
                 {
                     originCB.Items.Add(city.GetSIGLA());
@@ -127,6 +162,9 @@ namespace ProjetoUSCS_RJI5S
             {
                 city_list = db.getAllCitys();
                 vertex_list = db.getAllVertex();
+
+                originCB.Items.Clear();
+                destinyCB.Items.Clear();
 
                 foreach (City city in city_list)
                 {
@@ -149,12 +187,37 @@ namespace ProjetoUSCS_RJI5S
                 city_list = db.getAllCitys();
                 vertex_list = db.getAllVertex();
 
+                originCB.Items.Clear();
+                destinyCB.Items.Clear();
+
                 foreach (City city in city_list)
                 {
                     originCB.Items.Add(city.GetSIGLA());
                     destinyCB.Items.Add(city.GetSIGLA());
                 }
             }
+        }
+
+        private void GroupBox1_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Button5_Click(object sender, EventArgs e)
+        {
+            var confirmResult = MessageBox.Show("Tem certeza que deseja sair da aplicação?",
+                                     "Sair da Aplicação",
+                                     MessageBoxButtons.YesNo);
+            if (confirmResult == DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void Button6_Click(object sender, EventArgs e)
+        {
+            infoForm.Show();
+            infoForm.Location = new Point(this.Left + this.Width + 10, this.Top);
         }
     }
 }

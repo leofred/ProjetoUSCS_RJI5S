@@ -15,7 +15,7 @@ namespace WindowsFormsApp1.Classes {
         // algorithm for a graph represented  
         // using adjacency matrix  
         // representation  
-        public static void dijkstra ( int [ , ] adjacencyMatrix , int startVertex , int endVertexFromSelection ) {
+        public static int dijkstra ( int [ , ] adjacencyMatrix , int startVertex , int endVertexFromSelection ) {
             int nVertices = adjacencyMatrix.GetLength ( 0 );
 
             // shortestDistances[i] will hold the  
@@ -86,15 +86,14 @@ namespace WindowsFormsApp1.Classes {
                 }
             }
 
-            printSolution ( startVertex , shortestDistances , parents , endVertexFromSelection );
+            return printSolution ( startVertex , shortestDistances , parents , endVertexFromSelection );
         }
 
         // A utility function to print  
         // the constructed distances  
         // array and shortest paths  
-        private static void printSolution ( int startVertex , int [ ] distances , int [ ] parents , int endVertexFromSelection ) {
+        private static int printSolution ( int startVertex , int [ ] distances , int [ ] parents , int endVertexFromSelection ) {
             int nVertices = distances.Length;
-            Console.WriteLine("teste" + distances[distances.Length - 1]);
             Console.WriteLine ( "\n" + endVertexFromSelection + " is the destination\n" );
             Console.Write ( "Vertex\t Distance\tPath" );
             for ( int vertexIndex = 0 ; vertexIndex < nVertices ; vertexIndex++ ) {
@@ -104,6 +103,8 @@ namespace WindowsFormsApp1.Classes {
                     printPath ( vertexIndex , parents );
                 }
             }
+            
+            return distances[endVertexFromSelection];
         }
 
         // Function to print shortest path  
